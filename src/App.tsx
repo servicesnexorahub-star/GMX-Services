@@ -68,7 +68,7 @@ export default function App() {
   };
 
   const handleWhatsappInitiate = () => {
-    window.open("https://wa.me/919876543210?text=Hi!+I'm+exploring+your+website+and+would+like+to+discuss+installing+a+custom+sheets+CRM+and+website.", "_blank");
+    window.open("https://wa.me/917827225254?text=Hi!+I'm+exploring+your+website+and+would+like+to+discuss+installing+a+custom+sheets+CRM+and+website.", "_blank");
   };
 
   return (

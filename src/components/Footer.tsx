@@ -43,11 +43,11 @@ export default function Footer() {
           <div className="space-y-2 text-xs">
             <div className="flex items-center gap-2.5">
               <Phone className="w-4 h-4 text-accent-blue shrink-0" />
-              <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+              <a href="tel:+917827225254" className="hover:text-white transition-colors">+91 78272 25254</a>
             </div>
             <div className="flex items-center gap-2.5">
               <Mail className="w-4 h-4 text-accent-blue shrink-0" />
-              <a href="mailto:info@gmxservices.in" className="hover:text-white transition-colors">info@gmxservices.in</a>
+              <a href="mailto:gmxservicesdelhi@gmail.com" className="hover:text-white transition-colors">gmxservicesdelhi@gmail.com</a>
             </div>
             <div className="flex items-center gap-2.5">
               <MapPin className="w-4 h-4 text-accent-blue shrink-0" />

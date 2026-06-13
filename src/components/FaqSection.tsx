@@ -82,10 +82,10 @@ export default function FaqSection() {
         <div className="mt-12 text-center p-5 bg-[#fafbfc] border border-slate-150 rounded-2xl">
           <span className="text-xs text-slate-500 font-sans">
             Still have an unanswered technical or operational question? Chat with our team directly on 
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="text-[#25d366] font-bold mx-1 hover:underline">
+            <a href="https://wa.me/917827225254" target="_blank" rel="noopener noreferrer" className="text-[#25d366] font-bold mx-1 hover:underline">
               WhatsApp Support
             </a>
-            or ring +91 98765 43210 at any time of day.
+            or ring +91 78272 25254 at any time of day.
           </span>
         </div>
 

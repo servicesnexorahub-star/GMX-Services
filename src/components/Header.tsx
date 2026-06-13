@@ -90,12 +90,12 @@ export default function Header({ onAuditClick, onPortalToggle, isPortalOpen, aud
             </button>
 
             <a
-              href="tel:+919876543210"
+              href="tel:+917827225254"
               className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-primary-600 transition-colors"
               id="header-call-cta"
             >
               <Phone className="w-4 h-4 text-accent-blue" />
-              <span>+91 98765 43210</span>
+              <span>+91 78272 25254</span>
             </a>
 
             <button
@@ -155,11 +155,11 @@ export default function Header({ onAuditClick, onPortalToggle, isPortalOpen, aud
             
             <div className="flex flex-col gap-4">
               <a
-                href="tel:+919876543210"
+                href="tel:+917827225254"
                 className="flex items-center gap-2 text-slate-700 font-semibold text-sm py-1"
               >
                 <Phone className="w-4 h-4 text-accent-blue" />
-                <span>+91 98765 43210</span>
+                <span>+91 78272 25254</span>
               </a>
               <button
                 onClick={() => {

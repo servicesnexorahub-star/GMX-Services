@@ -66,7 +66,7 @@ export default function ConversionWidgets({ onAuditClick, onWhatsappClick }: Con
     <>
       {/* 1. Sticky WhatsApp Float Button (Bottom Right) */}
       <a
-        href="https://wa.me/919876543210?text=Hi!+I'd+like+to+request+a+free+systems+billing+and+local+SEO+audit+for+my+business."
+        href="https://wa.me/917827225254?text=Hi!+I'd+like+to+request+a+free+systems+billing+and+local+SEO+audit+for+my+business."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#20ba5a] active:scale-95 shadow-xl flex items-center justify-center text-white transition-all hover:rotate-6 group"
@@ -81,7 +81,7 @@ export default function ConversionWidgets({ onAuditClick, onWhatsappClick }: Con
 
       {/* 2. Sticky Mobile Call Action Widget (Bottom Left on screens, or bottom float) */}
       <a
-        href="tel:+919876543210"
+        href="tel:+917827225254"
         className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-primary-900 hover:bg-primary-850 active:scale-95 shadow-xl flex items-center justify-center text-white transition-all hover:-rotate-6 group"
         title="Ring consultation call"
         id="widget-phone-float"
