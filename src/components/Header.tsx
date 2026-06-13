@@ -8,12 +8,9 @@ import { Globe, LayoutDashboard, Phone, MessageSquare, Menu, X, ArrowRight } fro
 
 interface HeaderProps {
   onAuditClick: () => void;
-  onPortalToggle: () => void;
-  isPortalOpen: boolean;
-  auditSubmissionsCount: number;
 }
 
-export default function Header({ onAuditClick, onPortalToggle, isPortalOpen, auditSubmissionsCount }: HeaderProps) {
+export default function Header({ onAuditClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -28,7 +25,6 @@ export default function Header({ onAuditClick, onPortalToggle, isPortalOpen, aud
   const menuItems = [
     { label: 'Why Us', href: '#why-us' },
     { label: 'Services', href: '#services' },
-    { label: 'Dashboards', href: '#dashboards' },
     { label: 'Industries', href: '#industries' },
     { label: 'Process', href: '#process' },
     { label: 'Case Studies', href: '#case-studies' },
@@ -71,24 +67,6 @@ export default function Header({ onAuditClick, onPortalToggle, isPortalOpen, aud
 
           {/* Call to Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Live Sheets Portal Indicator Toggle */}
-            <button
-              onClick={onPortalToggle}
-              className={`flex items-center gap-2 px-3 pb-1.5 pt-1 rounded-full text-xs font-mono font-semibold transition-all duration-300 ${
-                isPortalOpen
-                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm shadow-emerald-50'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200'
-              }`}
-              title="Click to view the real-time Sheets CRM Simulator"
-              id="header-portal-toggle"
-            >
-              <span className={`w-2 h-2 rounded-full ${isPortalOpen ? 'bg-emerald-500 animate-ping' : 'bg-slate-450'}`} />
-              <span>CRM PORTAL</span>
-              <span className="bg-primary-900/10 px-1.5 py-0.5 rounded-full text-[10px] text-primary-800">
-                {auditSubmissionsCount} submissions
-              </span>
-            </button>
-
             <a
               href="tel:+917827225254"
               className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-primary-600 transition-colors"
@@ -113,17 +91,6 @@ export default function Header({ onAuditClick, onPortalToggle, isPortalOpen, aud
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={onPortalToggle}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[10px] font-mono font-semibold transition-all ${
-                isPortalOpen ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-100 text-slate-600 border border-slate-200'
-              }`}
-              id="header-mobile-portal-toggle"
-            >
-              <span className={`w-1.5 h-1.5 rounded-full ${isPortalOpen ? 'bg-emerald-500 animate-ping' : 'bg-slate-400'}`} />
-              <span>CRM</span>
-            </button>
-
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-1.5 rounded-lg text-slate-600 hover:text-primary-900 hover:bg-slate-50 transition-colors focus:outline-none"

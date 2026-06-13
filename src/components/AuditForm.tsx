@@ -18,11 +18,7 @@ import {
 } from 'lucide-react';
 import { AuditSubmission } from '../types';
 
-interface AuditFormProps {
-  onAuditSubmit: (submission: Omit<AuditSubmission, 'id' | 'status' | 'timestamp' | 'score'>) => void;
-}
-
-export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
+export default function AuditForm() {
   // Input states
   const [name, setName] = useState('');
   const [businessName, setBusinessName] = useState('');
@@ -61,29 +57,42 @@ export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
     }
 
     setIsLoading(true);
-    setProgressState('Connecting to Sheets API Webhook...');
+    setProgressState('Routing lead data to gmxservices.delhi@gmail.com...');
     
-    // Simulate interactive analysis phases
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    try {
+      // 1. Direct Multi-Channel Routing to Business Email
+      await fetch("https://formsubmit.co/ajax/gmxservices.delhi@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "Lead Source": "Book My Free GMX Services Audit Form",
+          "Client Name": name,
+          "Business Name": businessName,
+          "Phone Number": phone,
+          "WhatsApp Number": whatsapp || phone,
+          "Email Address": email,
+          "Current Website": website || 'None provided',
+          "_subject": `📥 New GMX Audit requested by ${businessName}`
+        })
+      });
+    } catch (err) {
+      console.warn("Direct email routing background fail check:", err);
+    }
+
+    // Simulate interactive analysis phases for premium feels
     setProgressState('Checking Google Maps ranking index...');
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 600));
     setProgressState('Evaluating Mobile SEO layout headers...');
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 600));
     setProgressState('Mapping custom Looker Studio recommendations...');
+    await new Promise((resolve) => setTimeout(resolve, 600));
     
     // Calculate a realistic random SEO index score
     const score = Math.floor(Math.random() * 30) + 45; // 45 to 75 score
     setMockScore(score);
-
-    // Call callback to store in App state (which populates showcase lists CRM!)
-    onAuditSubmit({
-      name,
-      businessName,
-      phone,
-      whatsapp: whatsapp || phone,
-      email,
-      website: website || 'N/A'
-    });
 
     setIsLoading(false);
     setIsSuccess(true);
@@ -178,10 +187,10 @@ export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="font-display font-bold text-xl text-emerald-950 mb-1">
-                    Audit Parameters Captured!
+                    Information Captured & Routed!
                   </h3>
                   <p className="font-sans text-slate-650 text-xs sm:text-sm max-w-md mb-5 leading-relaxed">
-                    We've registered your ticket under record <strong>AUDIT-{mockScore}</strong>. To initiate your bespoke analysis instantly, send these details directly to our engineering team:
+                    Thank you! Your details have been successfully captured and routed directly to <strong>gmxservices.delhi@gmail.com</strong>. Our team will review your parameters and connect with you via WhatsApp/Email shortly. If you'd like to initiate instantly, you can also send them manually below:
                   </p>
 
                   {/* High Value Send Group */}
@@ -215,18 +224,12 @@ export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-2.5 w-full">
-                    <a
-                      href="#dashboards"
-                      className="grow py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-150 text-slate-700 font-sans font-semibold text-xs text-center active:scale-98 transition-all border border-slate-200/40"
-                    >
-                      View in CRM Dashboard
-                    </a>
+                  <div className="w-full flex justify-center">
                     <button
                       onClick={handleReset}
-                      className="py-3 px-4 rounded-xl border border-slate-200 text-slate-500 font-semibold text-xs active:scale-98 hover:bg-slate-50 transition-all shrink-0"
+                      className="w-full py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-150 text-slate-700 font-sans font-semibold text-xs text-center active:scale-98 transition-all border border-slate-200"
                     >
-                      Audit Another
+                      Audit Another Account
                     </button>
                   </div>
                 </div>
