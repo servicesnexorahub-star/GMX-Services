@@ -12,7 +12,9 @@ import {
   ArrowRight, 
   Sparkles,
   FileText,
-  AlertCircle
+  AlertCircle,
+  Mail,
+  MessageSquare
 } from 'lucide-react';
 import { AuditSubmission } from '../types';
 
@@ -38,6 +40,17 @@ export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
   // Quick WhatsApp match same as phone
   const copyPhoneToWhatsapp = () => {
     setWhatsapp(phone);
+  };
+
+  const getWhatsAppShareUrl = () => {
+    const text = `Hi GMX Services, I have booked a Free GMX Services Audit for my business!\n\nHere are my details:\n- Name: ${name}\n- Business: ${businessName}\n- Phone: ${phone}\n- WhatsApp: ${whatsapp || phone}\n- Email: ${email}\n- Website: ${website || 'N/A'}\n\nPlease generate my free audit report. Thank you!`;
+    return `https://wa.me/917827225254?text=${encodeURIComponent(text)}`;
+  };
+
+  const getEmailShareUrl = () => {
+    const subject = `Free GMX Services Audit: ${businessName}`;
+    const body = `Hi GMX Services,\n\nI have booked a Free GMX Services Audit for my business!\n\nHere are my details:\n- Name: ${name}\n- Business: ${businessName}\n- Phone: ${phone}\n- WhatsApp: ${whatsapp || phone}\n- Email: ${email}\n- Website: ${website || 'N/A'}\n\nPlease generate my free audit report. Thank you!`;
+    return `mailto:gmxservices.delhi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -161,18 +174,39 @@ export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
               {/* STAGE B: Success State */}
               {isSuccess && (
                 <div className="py-6 flex flex-col items-center justify-center text-center animate-fadeIn">
-                  <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mb-6 shadow-sm">
+                  <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mb-5 shadow-sm">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-emerald-950 mb-2">
-                    Analysis Scheduled Successfully!
+                  <h3 className="font-display font-bold text-xl text-emerald-950 mb-1">
+                    Audit Parameters Captured!
                   </h3>
-                  <p className="font-sans text-slate-600 text-sm max-w-md mb-6 leading-relaxed">
-                    Congratulations! Your audit request is compiled. We've logged under record <strong>AUDIT-{mockScore}</strong> inside the CRM tables. One of our engineers will ring/Whatsapp you shortly.
+                  <p className="font-sans text-slate-650 text-xs sm:text-sm max-w-md mb-5 leading-relaxed">
+                    We've registered your ticket under record <strong>AUDIT-{mockScore}</strong>. To initiate your bespoke analysis instantly, send these details directly to our engineering team:
                   </p>
 
+                  {/* High Value Send Group */}
+                  <div className="w-full space-y-3 mb-6">
+                    <a
+                      href={getWhatsAppShareUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] active:scale-98 text-white font-sans font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                    >
+                      <MessageSquare className="w-4 h-4 shrink-0" />
+                      <span>Send Details to WhatsApp (+91 78272 25254)</span>
+                    </a>
+
+                    <a
+                      href={getEmailShareUrl()}
+                      className="w-full py-3.5 px-4 rounded-xl bg-primary-950 hover:bg-primary-900 active:scale-98 text-white font-sans font-bold text-xs flex items-center justify-center gap-2 border border-slate-900/10 shadow-md transition-all"
+                    >
+                      <Mail className="w-4 h-4 shrink-0" />
+                      <span>Email Details to gmxservices.delhi@gmail.com</span>
+                    </a>
+                  </div>
+
                   <div className="bg-slate-50 p-4.5 rounded-2xl w-full border border-slate-100 text-left mb-6">
-                    <span className="text-[10px] font-mono tracking-wider text-slate-450 uppercase block mb-2 font-bold">Audit Parameters Received</span>
+                    <span className="text-[10px] font-mono tracking-wider text-slate-450 uppercase block mb-2 font-bold">Parameters Recorded</span>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div><span className="text-slate-400">Business:</span> <span className="font-semibold text-slate-805 truncate block">{businessName}</span></div>
                       <div><span className="text-slate-400">Email:</span> <span className="font-semibold text-slate-805 truncate block">{email}</span></div>
@@ -181,18 +215,18 @@ export default function AuditForm({ onAuditSubmit }: AuditFormProps) {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3 w-full">
+                  <div className="flex flex-col sm:flex-row gap-2.5 w-full">
                     <a
                       href="#dashboards"
-                      className="grow py-3.5 px-4 rounded-xl bg-primary-950 text-white font-sans font-bold text-xs text-center border active:scale-98 transition-all"
+                      className="grow py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-150 text-slate-700 font-sans font-semibold text-xs text-center active:scale-98 transition-all border border-slate-200/40"
                     >
-                      Check Live CRM Table Above
+                      View in CRM Dashboard
                     </a>
                     <button
                       onClick={handleReset}
-                      className="py-3.5 px-4 rounded-xl border border-slate-200 text-slate-500 font-semibold text-xs active:scale-98 hover:bg-slate-50 transition-all"
+                      className="py-3 px-4 rounded-xl border border-slate-200 text-slate-500 font-semibold text-xs active:scale-98 hover:bg-slate-50 transition-all shrink-0"
                     >
-                      Audit Another Account
+                      Audit Another
                     </button>
                   </div>
                 </div>
