@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary-50: #f0f7ff;
+  --color-primary-100: #e0ecff;
+  --color-primary-200: #c7dcff;
+  --color-primary-300: #93beff;
+  --color-primary-400: #5993ff;
+  --color-primary-500: #2563eb;
+  --color-primary-600: #1d4ed8;
+  --color-primary-700: #1e40af;
+  --color-primary-800: #1e3a8a;
+  --color-primary-900: #0f172a;
+  --color-primary-950: #020617;
+
+  --color-accent-blue: #2563eb;
+  --color-accent-teal: #0d9488;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #fafbfc;
+    color: #1e293b;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom scrollbar to keep it looking clean */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom shadow patterns for elegant depth */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark-glass-panel {
+  background: rgba(12, 20, 58, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.premium-shadow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.015), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.premium-shadow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.premium-shadow-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(12, 20, 58, 0.05), 0 2px 8px rgba(12, 20, 58, 0.02);
+}
+
+@keyframes grid-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+.moving-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(12, 20, 58, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 20, 58, 0.02) 1px, transparent 1px);
+  animation: grid-move 8s linear infinite;
+}
